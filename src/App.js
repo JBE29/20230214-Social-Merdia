@@ -1,7 +1,14 @@
+import {makeObservable, observable} from "mobx";
+import {observer} from "mobx-react";
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const addName = () => {
+
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,8 +25,21 @@ function App() {
           Learn React
         </a>
       </header>
+      <div>
+        <button onClick={this.addName}>Add Name</button>
+      </div>
     </div>
   );
-}
+};
 
-export default App;
+class MyStore {
+  name = "";
+  names = [];
+};
+
+makeObservable(MyStore, {
+  name: observable,
+  names: observable,
+})
+
+export default observer(App);
